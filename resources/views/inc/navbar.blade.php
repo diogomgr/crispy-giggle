@@ -29,8 +29,8 @@
             <ul class="dropdown-menu text-small" aria-labelledby="dropDownNavbar">
                 <a class="dropdown-item" href="#">Dashboard</a>
                 <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                <a class="dropdown-item" href="#">Encomendas</a>
-                <a class="dropdown-item" href="#">Historico</a>
+                <a class="dropdown-item" href="{{ route('encomendas.index') }}">Encomendas</a>
+                <a class="dropdown-item" href="{{ route('historico.index') }}">Historico</a>
             <li><hr class="dropdown-divider"></li>
             <li>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

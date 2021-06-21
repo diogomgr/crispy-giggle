@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Preco;
+use App\Encomenda;
 use App\Estampa;
 use Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -35,6 +37,15 @@ class EncomendaController extends Controller
         ]);
         var_dump(Cart::content());
         return view('stamps.catalog', compact('stampsList'));
+    }
+
+    public function estadoEncomendas()
+    {
+        $encomendas = Encomenda::where('estado', 'pendente')
+        ->where('cliente_id', Auth::id())
+        ->get();
+
+        return view('encomendas.index', compact('encomendas'));
     }
 
 }

@@ -30,6 +30,8 @@ Auth::routes();
 Route::get('/profile', 'UserController@index')->middleware('auth')->name('user.profile');
 Route::get('/staff', 'UserController@staff')->middleware('auth')->name('user.staff');
 
+Route::get('/encomendas', 'EncomendaController@estadoEncomendas')->name('encomendas.index');
+Route::get('/historico', 'HistoricoController@historicoEncomendas')->name('historico.index');
 
 Route::get('/catalog', 'StampsController@index')->name('stamps.catalog');
 Route::get('/stamp/{id}', 'StampsController@detalhes');
