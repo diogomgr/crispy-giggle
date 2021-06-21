@@ -1,0 +1,59 @@
+.tamanho {
+    width: 50px;
+    height: fit-content;
+
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: medium;
+
+    text-align: center;
+    cursor: pointer;
+}
+
+.tamanho:hover {
+    color: white;
+    background-color: gray;
+}
+
+.stamps-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.tamanhosList {
+    display: flex;
+    justify-content: row;
+}
+
+.stamp {
+    border: 1px solid black;
+}
+
+.stamp-imagem img{
+    width: 150px;
+    height: 185px;
+}
+
+.tshirts-area {
+    display: grid;
+    grid-template-rows: repeat(5, 170px);
+    grid-template-columns: repeat(7, 200px);
+
+    column-gap: 30px;
+    row-gap: 50px;
+}
+
+.tshirt-imagem img{
+    width: 150px;
+    height: 185px;
+}
+
+.tshirt-imagem .stamp-shirt {
+    position: relative;
+
+    width: 80px;
+    height: 115px;
+
+    left: 18%;
+    bottom: calc(-215px + 63px);
+}

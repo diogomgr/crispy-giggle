@@ -1,0 +1,40 @@
+.stamps-list {
+    display: grid;
+
+    grid-template-columns: 420px 420px 420px;
+    grid-template-rows: 270px 270px 270px;
+
+    column-gap: 30px;
+    row-gap: 50px;
+}
+
+.stamp {
+    width: 420px;
+    height: fit-content;
+
+    padding: 10px;
+
+    border: 1px solid black;
+}
+
+.stamp img {
+    width: 150px;
+    height: 185px;
+
+    margin: 0px 0px 10px;
+}
+
+.stamp p {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.pagination {
+    width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+
+    margin-top: 70px;
+}
