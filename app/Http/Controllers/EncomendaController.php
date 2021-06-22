@@ -62,6 +62,78 @@ class EncomendaController extends Controller
         return view('pages.cart')->with($data);
     }
 
+    public function itemMinus(Request $request)
+    {
+        $rowId = $request->route('id');
+        Cart::update($rowId, ["qty" => Cart::get($rowId)->qty - 1]);
+
+        $cartList = Cart::content();
+        $tshirtList = array();
+        $stampsList = array();
+
+        foreach ($cartList as $cart => $cartItem) {
+            $stamp = Estampa::where('id', $cartItem->name)->whereNull('deleted_at')->first();
+            $tshirt = Cor::where('codigo', $cartItem->id)->whereNull('deleted_at')->first();
+
+            array_push($tshirtList, $tshirt);
+            array_push($stampsList, $stamp); 
+        }
+        $data = array(
+            "cartList" => $cartList,
+            "tshirtList" => $tshirtList,
+            "stampsList" => $stampsList
+        );
+        
+        return view('pages.cart')->with($data);
+    }
+    public function itemPlus(Request $request)
+    {
+        $rowId = $request->route('id');
+        Cart::update($rowId, ["qty" => Cart::get($rowId)->qty + 1]);
+
+        $cartList = Cart::content();
+        $tshirtList = array();
+        $stampsList = array();
+
+        foreach ($cartList as $cart => $cartItem) {
+            $stamp = Estampa::where('id', $cartItem->name)->whereNull('deleted_at')->first();
+            $tshirt = Cor::where('codigo', $cartItem->id)->whereNull('deleted_at')->first();
+
+            array_push($tshirtList, $tshirt);
+            array_push($stampsList, $stamp); 
+        }
+        $data = array(
+            "cartList" => $cartList,
+            "tshirtList" => $tshirtList,
+            "stampsList" => $stampsList
+        );
+        
+        return view('pages.cart')->with($data);
+    }
+    public function removeItem(Request $request)
+    {
+        Cart::remove($request->route('id'));
+
+        $cartList = Cart::content();
+        $tshirtList = array();
+        $stampsList = array();
+
+        foreach ($cartList as $cart => $cartItem) {
+            $stamp = Estampa::where('id', $cartItem->name)->whereNull('deleted_at')->first();
+            $tshirt = Cor::where('codigo', $cartItem->id)->whereNull('deleted_at')->first();
+
+            array_push($tshirtList, $tshirt);
+            array_push($stampsList, $stamp); 
+        }
+        $data = array(
+            "cartList" => $cartList,
+            "tshirtList" => $tshirtList,
+            "stampsList" => $stampsList
+        );
+        
+        return view('pages.cart')->with($data);
+    }
+
      public function estadoEncomendas()
     {
         $encomendas = Encomenda::where('estado', 'pendente')

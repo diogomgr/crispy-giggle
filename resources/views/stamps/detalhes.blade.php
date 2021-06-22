@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@php
-session_start();    
-$_SESSION["carrinho"] = array();               
-@endphp
-
 @section('links')
 <link href="{{ asset('css/stamps/detalhes.css') }}" rel="stylesheet">
 @endsection
