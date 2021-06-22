@@ -17,7 +17,7 @@
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="#" class="nav-link cart-link">
-                <i class="bi-basket"></i>
+                <a class="" href="{{ route('cart.index') }}"><i class="bi-basket"></i></a>
               </a>
             </li>
           </ul>

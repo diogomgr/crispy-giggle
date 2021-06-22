@@ -1,11 +1,17 @@
 .stamps-list {
     display: grid;
 
-    grid-template-columns: 420px 420px 420px;
-    grid-template-rows: 270px 270px 270px;
+    grid-template-columns: 420px 420px 420px 420px;
+    grid-template-rows: 270px 270px 270px 270px;
 
     column-gap: 30px;
     row-gap: 50px;
+
+    place-content: center;
+}
+
+h1 {
+    padding-left: 15px;
 }
 
 .stamp {

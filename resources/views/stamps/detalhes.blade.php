@@ -50,17 +50,18 @@ $_SESSION["carrinho"] = array();
         @foreach ($listaTshirts as $tshirts=> $tshirt)
         
             <div class="tshirt">
-        
-             <div class="tshirt-imagem">
-                <img class="stamp-shirt" src="{{Storage::url('/estampas/'.$stamp->imagem_url)}}" alt="Cor da stamp">
-                <img src="{{Storage::url('/tshirt_base/'.$tshirt->codigo)}}.jpg" alt="Cor">
-             </div>
-                <div class="tshirt-info-area">
-                    <div class="tshirt-info">
+                <label>
+                    <div class="tshirt-imagem">
+                        <img class="stamp-shirt" src="{{Storage::url('/estampas/'.$stamp->imagem_url)}}" alt="Cor da stamp">
+                        <img src="{{Storage::url('/tshirt_base/'.$tshirt->codigo)}}.jpg" alt="Cor">
                         <span class="tshirt-info-desc">{{ $tshirt->nome }}</span>
-                        <span class="Cor"><input type="radio" id="Cor_{{$tshirt->codigo}}" value="{{$tshirt->codigo}}" name="cor"></span>
+                        <span class="Cor"><input class="cor_radio" type="radio" id="Cor_{{$tshirt->codigo}}" value="{{$tshirt->codigo}}" name="cor"></span>
                     </div>
-                </div>
+                    <div class="tshirt-info-area">
+                        <div class="tshirt-info">
+                        </div>
+                    </div>
+                </label>
             </div>
             
         

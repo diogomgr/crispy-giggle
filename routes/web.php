@@ -19,26 +19,28 @@ Route::get('/', function () {
 
 Route::get('/costumize', function () {
     return view('pages.home');
-})->name('costumize');
+})->middleware(['auth', 'verified'])->name('costumize');
 
 Route::get('/contacts', function () {
     return view('pages.home');
 })->name('contacts');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/profile', 'UserController@index')->middleware('auth')->name('user.profile');
-Route::get('/staff', 'UserController@staff')->middleware('auth')->name('user.staff');
+Route::get('/profile', 'UserController@index')->middleware(['auth', 'verified'])->name('user.profile');
+Route::get('/staff', 'UserController@staff')->middleware(['auth', 'verified'])->name('user.staff');
 
-Route::get('/encomendas', 'EncomendaController@estadoEncomendas')->name('encomendas.index');
-Route::get('/historico', 'HistoricoController@historicoEncomendas')->name('historico.index');
+Route::get('/encomendas', 'EncomendaController@estadoEncomendas')->middleware(['auth', 'verified'])->name('encomendas.index');
+Route::get('/historico', 'HistoricoController@historicoEncomendas')->middleware(['auth', 'verified'])->name('historico.index');
 
 Route::get('/catalog', 'StampsController@index')->name('stamps.catalog');
-Route::get('/stamp/{id}', 'StampsController@detalhes');
-Route::post('/stamp/{id}', 'EncomendaController@addToCart')->name('carrinho.add');
+Route::get('/stamp/{id}', 'StampsController@detalhes')->middleware(['auth', 'verified']);
+Route::post('/stamp/{id}', 'EncomendaController@addToCart')->middleware(['auth', 'verified'])->name('carrinho.add');
 
 
-Route::get('/staff/{id}/profile', 'UserController@staffProfile')->middleware('auth')->name('user.staff.profile');
+Route::get('/staff/{id}/profile', 'UserController@staffProfile')->middleware(['auth', 'verified'])->name('user.staff.profile');
 
-Route::post('/profile', 'UserController@edit')->middleware('auth')->name('user.edit');
-Route::post('/staff/{id}/profile', 'UserController@editStaff')->middleware('auth')->name('user.staff.edit');
+Route::post('/profile', 'UserController@edit')->middleware(['auth', 'verified'])->name('user.edit');
+Route::post('/staff/{id}/profile', 'UserController@editStaff')->middleware(['auth', 'verified'])->name('user.staff.edit');
+
+Route::get('/cart', 'EncomendaController@viewCart')->middleware(['auth', 'verified'])->name('cart.index');

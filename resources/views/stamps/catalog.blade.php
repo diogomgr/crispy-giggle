@@ -11,9 +11,11 @@
     <div class="stamps-list">
         @foreach ($stampsList as $stamps => $stamp)
         <span class="stamp">
-            <a href="/stamp/{{$stamp->id}}"><img src="{{ Storage::url('/estampas/' . $stamp->imagem_url) }}" alt="stamp_image"></a>
-                <p><strong>Name: </strong>{{ $stamp->nome }}</p>
-                <p><strong>Description: </strong>{{ $stamp->descricao }}</p>
+            <a href="/stamp/{{$stamp->id}}">
+                <img src="{{ Storage::url('/estampas/' . $stamp->imagem_url) }}" alt="stamp_image">
+            </a>
+            <p><strong>Name: </strong>{{ $stamp->nome }}</p>
+            <p><strong>Description: </strong>{{ $stamp->descricao }}</p>
         </span>
         @endforeach
     </div>

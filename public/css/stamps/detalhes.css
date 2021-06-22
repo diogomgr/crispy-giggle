@@ -43,17 +43,45 @@
     row-gap: 50px;
 }
 
-.tshirt-imagem img{
+.tshirt {
+    width: fit-content;
+    height: fit-content;
+}
+
+.tshirt-imagem {
     width: 150px;
     height: 185px;
 }
 
-.tshirt-imagem .stamp-shirt {
+.tshirt-imagem img{
     position: relative;
 
+    width: 150px;
+    height: 185px;
+
+    top: -63.5%;
+    cursor: pointer;
+}
+
+.tshirt-imagem .stamp-shirt {
+    position: relative;
     width: 80px;
     height: 115px;
+    left: 23%;
+    top: 14%;
+    z-index: 99;
+}
 
+.cor_radio {
+    position: relative;
+    z-index: 101;
+    top: -62%;
     left: 18%;
-    bottom: calc(-215px + 63px);
+}
+
+.tshirt-info-desc {
+    position: relative;
+    z-index: 101;
+    top: -62%;
+    left: 18%;
 }

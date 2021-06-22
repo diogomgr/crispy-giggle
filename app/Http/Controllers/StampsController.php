@@ -11,7 +11,7 @@ class StampsController extends Controller
 {
     public function index()
     {
-        $stampsList = Estampa::orderBy('id')->simplePaginate(9);
+        $stampsList = Estampa::orderBy('id')->simplePaginate(12);
         return view('stamps.catalog', compact('stampsList'));
     }
     public function detalhes(Request $request)
