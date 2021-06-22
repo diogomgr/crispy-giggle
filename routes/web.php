@@ -44,6 +44,4 @@ Route::post('/profile', 'UserController@edit')->middleware(['auth', 'verified'])
 Route::post('/staff/{id}/profile', 'UserController@editStaff')->middleware(['auth', 'verified'])->name('user.staff.edit');
 
 Route::get('/cart', 'EncomendaController@viewCart')->middleware(['auth', 'verified'])->name('carrinho.index');
-Route::put('/cart/{id}', 'EncomendaController@itemMinus')->middleware(['auth', 'verified'])->name('carrinho.minus');
-Route::put('/cart/{id}', 'EncomendaController@itemPlus')->middleware(['auth', 'verified'])->name('carrinho.plus');
-Route::put('/cart/{id}', 'EncomendaController@removeItem')->middleware(['auth', 'verified']->name('carrinho.remove'));
+Route::post('/cart/{id}', 'EncomendaController@removeItem')->middleware(['auth', 'verified'])->name('carrinho.remove');

@@ -16,7 +16,7 @@
                 </div>
                 @foreach ($cartList as $cart => $cartItem)
                 
-                    <form action="{{route('carrinho.plus', $cartItem->rowId)}}" method="post">
+                    <form action="/cart/{{$cartItem->rowId}}" method="post">
                         @csrf
                         <div id="{{ $cartItem->rowId }}" class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
                             <div class="mr-1"><img class="rounded" src="{{Storage::url('/tshirt_base/'.$cartItem->id)}}.jpg"
@@ -56,14 +56,13 @@
                                         </span></div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row align-items-center qty"><i class="bi bi-dash text-danger"></i></i>
+                            <div class="d-flex flex-row align-items-center qty">
                                 <h5 class="text-grey mt-1 mr-1 ml-1"> {{ $cartItem->qty }} </h5>
-                                <i class="bi bi-plus text-success"></i>
                             </div>
                             <div>
                                 <h5 class="text-grey">€{{ $cartItem->price * $cartItem->qty }}</h5>
                             </div>
-                            <div class="d-flex align-items-center"><i class="bi bi-dash-circle text-danger"></i></div>
+                            <div class="d-flex align-items-center"><button type="submit"><i class="bi bi-dash-circle text-danger"></i></button></div>
                         </div>
                     </form>
                 @endforeach
