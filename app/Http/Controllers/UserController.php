@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Cliente;
 use Auth;
 
 class UserController extends Controller
@@ -15,8 +16,8 @@ class UserController extends Controller
             return abort(403, 'Unauthorized action.');
         }
 
-        $user = User::findOrFail(Auth::id());
-        return view('user.profile', compact('user'));
+        $client = Cliente::findOrFail(Auth::id());
+        return view('user.profile', compact('client'));
     }
 
     public function showStaffProfile(Request $request)

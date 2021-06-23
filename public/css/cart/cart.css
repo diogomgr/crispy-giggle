@@ -1,0 +1,27 @@
+
+
+#removeFromCart {
+    background-color: #FFFDF2;
+    border: none;
+    width: 100px;
+    height: fit-content;
+}
+
+#removeFromCart i{
+    font-size: 26px;
+}
+
+.attr {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    top: 1px;
+    left: 50%;
+}
+
+.stamp-image {
+    position: relative;
+    width: 34px;
+    top: 25px;
+    left: -170%;
+}

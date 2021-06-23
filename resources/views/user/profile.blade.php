@@ -13,14 +13,14 @@
                 <div class="panel">
                     <div class="user-heading round">
                         <a href="#">
-                            <img src="{{Storage::url('/fotos/' . $user->foto_url)}}" alt="">
+                            <img src="{{Storage::url('/fotos/' . Auth::user()->foto_url)}}" alt="">
                         </a>
-                        <h1>{{ $user->name }}</h1>
-                        <p>{{ $user->email }}</p>
+                        <h1>{{ Auth::user()->name }}</h1>
+                        <p>{{ Auth::user()->email }}</p>
                     </div>
                 </div>
 
-                <form action="{{ route('user.block', $user->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('user.block', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                 <ul class="nav" @if(Auth::user()->tipo != 'A') style="display: none" @endif>
                     <li> 
@@ -52,14 +52,14 @@
                     <div class="panel-body bio-graph-info">
                         <div class="row">
                             <div class="bio-row">
-                                <p><span><strong>Name </strong></span>: {{ $user->name }}</p>
+                                <p><span><strong>Name </strong></span>: {{ Auth::user()->name }}</p>
                             </div>
                             <div class="bio-row">
-                                <p><span><strong> Email </strong></span>: {{ $user->email }}</p>
+                                <p><span><strong> Email </strong></span>: {{ Auth::user()->email }}</p>
                             </div>
                             <div class="bio-row">
                                 <p><span><strong>Tipo</strong> </span>: 
-                                    @switch($user->tipo)
+                                    @switch(Auth::user()->tipo)
                                         @case('C')
                                             Client
                                             @break
@@ -76,7 +76,7 @@
                             </div>
                             <div class="bio-row">
                                 <p><span><strong>Estado</strong> </span>: 
-                                    @if ($user->bloqueado == 0)
+                                    @if (Auth::user()->bloqueado == 0)
                                         Not Blocked
                                     @else
                                         Blocked
@@ -95,11 +95,11 @@
                         <div class="row">
                             <div class="bio-row">
                                 <label for="name" class="form-label"><strong>Name</strong></label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="bio-row">
                                 <label for="email" class="form-label"><strong>Email</strong></label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+                                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}">
                             </div>
                             <div class="bio-row">
                                 <label for="password" class="form-label"><strong>Password</strong></label>

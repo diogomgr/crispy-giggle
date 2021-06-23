@@ -26,7 +26,7 @@
                 <th scope="row">{{ $user->id }}</th>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td><a class="btn bg-info text-white" href="/staff/{{$user->id}}/profile">Edit</button></td>
+                <td><a class="btn bg-info text-white" href="{{ route('user.staff.profile', $user->id) }}">Edit</button></td>
             </tr>
             @endforeach
         </tbody>
