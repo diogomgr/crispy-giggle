@@ -13,25 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/', 'StampsController@index')->name('stamps.catalog');
 
 Route::get('/costumize', function () {
     return view('pages.home');
 })->middleware(['auth', 'verified'])->name('costumize');
 
-Route::get('/contacts', function () {
-    return view('pages.home');
-})->name('contacts');
-
-Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);     
 
 Route::get('/profile', 'UserController@index')->middleware(['auth', 'verified'])->name('user.profile');
 Route::get('/staff', 'UserController@staff')->middleware(['auth', 'verified'])->name('user.staff');
 
 Route::get('/encomendas', 'EncomendaController@estadoEncomendas')->middleware(['auth', 'verified'])->name('encomendas.index');
 Route::get('/historico', 'HistoricoController@historicoEncomendas')->middleware(['auth', 'verified'])->name('historico.index');
+//Route::post('/encomendas', 'EncomendaController@create')->name('encomendas.create');
 
 Route::get('/catalog', 'StampsController@index')->name('stamps.catalog');
 Route::get('/stamp/{id}', 'StampsController@detalhes')->middleware(['auth', 'verified']);

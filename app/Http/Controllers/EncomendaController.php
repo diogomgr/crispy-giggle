@@ -9,6 +9,7 @@ use App\Cor;
 use App\Encomenda;
 use Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
 
 class EncomendaController extends Controller
 {
@@ -88,11 +89,40 @@ class EncomendaController extends Controller
 
      public function estadoEncomendas()
     {
-        $encomendas = Encomenda::where('estado', 'pendente')
+        $encomendasPendentes = Encomenda::where('estado', 'pendente')
         ->where('cliente_id', Auth::id())
         ->get();
 
-        return view('encomendas.index', compact('encomendas'));
+        
+        $encomendasPagas = Encomenda::where('estado', 'paga')
+        ->where('cliente_id', Auth::id())
+        ->get();
+
+        $data = array(
+            "encomendasPagas" => $encomendasPagas,
+            "encomendasPendentes" => $encomendasPendentes
+        );
+
+        return view('encomendas.index')->with($data);
     }
 
+    /*
+    public function create(Request $request)
+    {
+        
+        $data = array(
+            'estado' => 'paga',
+            "cliente_id" => 522,
+            "data" => '2021-06-21', 
+            "preco_total" => 30,
+            'notas' => null,
+            'NIF' => 999999999,
+            'endereco' => 'Rua do Vale do Grelo, 123-1233 Alheias',
+            'tipo_pagamento' => 'PAYPAL',
+            'ref_pagamento' => 'olacnogaspar@gmail.com',
+            'recibo_url' => null
+        );
+        DB::table('encomendas')->insert($data);
+    }
+    */
 }

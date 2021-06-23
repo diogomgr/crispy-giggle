@@ -23,7 +23,7 @@ class UserController extends Controller
         $listUser = User::where('tipo', 'F')->get();
 
         $user = User::findOrFail(Auth::id());
-        if($user->tipo == 'F'){
+        if($user->tipo == 'F' || $user->tipo == 'C'){
             return abort(403, 'Unauthorized action.');
         }
         return view('user.staff', compact('listUser'));

@@ -8,9 +8,9 @@
 @foreach ($historico as $historico => $e)
     <div class="listaEncomendas">
         <div class="encomenda" id="encomenda_{{ $e->id }}">
-            <h3>Data: {{ $e->data }}</h1>   
-            <h4>Estado: {{ $e->estado }}</h2>
-            <h4>Preço: {{ $e->preco_total }}</h3>
+            <h5><b>Data: </b>{{ $e->data }}</h5>   
+            <h5><b>Estado: </b>{{ $e->estado }}</h5>
+            <h5><b>Preço: </b>{{ $e->preco_total }}</h5>
         </div>
     </div>
 @endforeach
