@@ -1,0 +1,15 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.landing-image {
+    width: 364px;
+    height: 604px;
+}
+
+.right {
+    max-width: 45vw;
+    padding-left: 10%;
+}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('links')
-<link href="{{ asset('css/cart/cart.css') }}" rel="stylesheet">
+<link href="{{ asset('css/pages/cart.css') }}" rel="stylesheet">
 @endsection
 
 
@@ -11,8 +11,6 @@
             <div class="col-md-8">
                 <div class="p-2">
                     <h4>Shopping cart</h4>
-                    <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span
-                            class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
                 </div>
                 @foreach ($cartList as $cart => $cartItem)
                 
@@ -66,8 +64,6 @@
                         </div>
                     </form>
                 @endforeach
-                <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button
-                        class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
             </div>
         </div>
     </div> 

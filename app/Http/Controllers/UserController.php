@@ -9,27 +9,17 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function index()
+    public function showProfile()
     {
-        $user = User::findOrFail(Auth::id());
-        if($user->tipo == 'F'){
+        if(Auth::user()->tipo == 'F'){
             return abort(403, 'Unauthorized action.');
         }
+
+        $user = User::findOrFail(Auth::id());
         return view('user.profile', compact('user'));
     }
 
-    public function staff()
-    {
-        $listUser = User::where('tipo', 'F')->get();
-
-        $user = User::findOrFail(Auth::id());
-        if($user->tipo == 'F'){
-            return abort(403, 'Unauthorized action.');
-        }
-        return view('user.staff', compact('listUser'));
-    }
-
-    public function staffProfile(Request $request)
+    public function showStaffProfile(Request $request)
     {
 
         if(Auth::user()->tipo == 'A'){
@@ -39,7 +29,25 @@ class UserController extends Controller
         return abort(403, 'Unauthorized action.');
     }
 
-    public function edit(Request $request)
+    public function listStaff(Request $request)
+    {
+        switch (Auth::user()->tipo) {
+            case 'A': 
+                break;
+            case 'F':
+            case 'C':
+                return abort(403, 'Unauthorized action.');
+                break;
+            default:
+                return abort(403, 'Unauthorized action.');
+                break;
+        }
+
+        $listUser = User::where('tipo', 'F')->get();
+        return view('user.staff', compact('listUser'));
+    }
+
+    public function editProfile(Request $request)
     {
         $name =     $request->input('name');
         $email =    $request->input('email');
@@ -47,12 +55,13 @@ class UserController extends Controller
 
         $data = array(
             "name"      => $name,
-            "email"     => $email
+            "email"     => $email,
+            "foto_url" => NULL
         );
 
-        if(!empty($request->photo)){
-            $imageName = Auth::id() . '.' . $request->photo->getClientOriginalExtension();
-            $request->photo->move(public_path('storage/fotos'), $imageName);
+        if(!empty($request->file('photo'))){
+            $imageName = Auth::id() . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('storage/fotos'), $imageName);
             $data["foto_url"] = $imageName;
         }
 
@@ -66,7 +75,7 @@ class UserController extends Controller
         return view('user.profile', compact('user'));
     }
 
-    public function editStaff(Request $request)
+    public function editStaffProfile(Request $request)
     {
         $name =     $request->input('name');
         $email =    $request->input('email');
@@ -77,9 +86,9 @@ class UserController extends Controller
             "email"     => $email
         );
 
-        if(!empty($request->photo)){
-            $imageName = $request->route('id') . '.' . $request->photo->getClientOriginalExtension();
-            $request->photo->move(public_path('storage/fotos'), $imageName);
+        if(!empty($request->file('photo'))){
+            $imageName = $request->route('id') . '.' . $request->file('photo')->getClientOriginalExtension();
+            $request->file('photo')->move(public_path('storage/fotos'), $imageName);
             $data["foto_url"] = $imageName;
         }
 
@@ -91,5 +100,34 @@ class UserController extends Controller
         User::findOrFail($request->route('id'))->update($data);
         $user = User::findOrFail($request->route('id'));
         return view('user.staff.profile', compact('user'));
+    }
+
+    
+
+    public function blockProfile(Request $request)
+    {
+        
+        switch (Auth::user()->tipo) {
+            case 'A': 
+                break;
+            case 'F':
+            case 'C':
+                return abort(403, 'Unauthorized action.');
+                break;
+            default:
+                return abort(403, 'Unauthorized action.');
+                break;
+        }
+        $data = array(
+            "bloqueado" => 1
+        );
+
+        if(!empty($request->route('id'))){
+            User::findOrFail($request->route('id'))->update($data);
+        } else {
+            User::findOrFail(Auth::id())->update($data);
+        }
+        
+        return view('pages.home');
     }
 }

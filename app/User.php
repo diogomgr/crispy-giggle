@@ -36,4 +36,18 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+    * The model's default values for attributes.
+    *
+    * @var array
+    */
+   protected $attributes = [
+       'tipo' => 'C',
+   ];
+
+   public function cliente()
+   {
+       return $this->hasOne('App\Cliente', 'id');
+   }
 }

@@ -1,0 +1,35 @@
+nav {
+    width: 100%;
+    height: max-content;
+}
+
+#navbarNav {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-nav {
+    width: 25%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+}
+
+#navbarNav .navbar-nav .nav-item .nav-link {
+    color: black;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+
+#navbarNav .navbar-nav .nav-item .nav-link.current {
+    text-decoration-line: line-through;
+    text-decoration-color: black;
+    text-decoration-style: solid;
+
+    font-size: 18px;
+    transform: translateY(-5px);
+}

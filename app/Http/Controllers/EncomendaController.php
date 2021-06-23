@@ -86,13 +86,4 @@ class EncomendaController extends Controller
         return view('pages.cart')->with($data);
     }
 
-     public function estadoEncomendas()
-    {
-        $encomendas = Encomenda::where('estado', 'pendente')
-        ->where('cliente_id', Auth::id())
-        ->get();
-
-        return view('encomendas.index', compact('encomendas'));
-    }
-
 }

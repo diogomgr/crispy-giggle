@@ -1,0 +1,76 @@
+header {
+    height: 139px;
+
+    margin-bottom: 6vh;
+
+    background-color: #D2D4CF;
+}
+
+header.smaller {
+    height: 90px;
+}
+.icon, .icon:visited, .icon:hover {
+    color: black;
+}
+
+.above {
+    width: 100%;
+    height: 89px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+}
+.above .container-logo {
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-left: 110px;
+}
+
+.above .container-logo-center {
+    width: 100vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 48px;
+
+    color: black;
+
+    text-decoration-line: line-through;
+    text-decoration-color: black;
+    text-decoration-style: solid;
+
+}
+
+.above .icons {
+    width: 80px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 24px;
+    margin-right: 50px;
+}
+
+.above .icons .mdi-account {
+    font-size: 27px;
+}
+
+.logo:hover {
+    color: black;
+}
+
+.above a.btn {
+    transform: translateX(-50px)
+}

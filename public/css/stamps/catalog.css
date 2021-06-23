@@ -1,17 +1,151 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.filters {
+    width: 200px;
+}
+
+.filter-category {
+    width: 100%;
+    height: 140px;
+}
+
+.filter-category-title {
+    margin-bottom: 0;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    text-transform: uppercase;
+
+    color: #D2D5CF;
+
+    text-shadow: 0.5px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+#colorDropdown {
+    background-color: #5DB7DE;
+    color: white;
+    width: 251.56px;
+
+    border-radius: 5px;
+}
+
+.filter-category hr {
+    margin: 0;
+    margin-bottom: 10px;
+
+    width: 251.56px;
+
+    border: 1px solid #959794;
+}
+
+.listBadges {
+    width: 251.56px;
+}
+
+#filterCategories {
+    width: 251.56px;
+    margin-top: 5px;
+
+    background-color: #F26419;
+    color: white;
+}
+
+.category-badge {
+    font-weight: normal;
+    font-size: medium;
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    background-color: #54414E;
+    color: white !important;
+
+    cursor: pointer;
+}
+
+.filter-category .dropdown {
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.filter-category .dropdown a {
+    width: 100%;
+    color: #000;
+}
+
+.filter-category .dropdown hr {
+    margin-top: 8px;
+}
+
+.filter-category .dropdown a.dropdown-toggle {
+    padding: 5px 15px;
+}
+
+.img-radius {
+    width: 150px;
+    height: 185px;
+}
+
+.pagination {
+    width: 1300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dropdown.bootstrap-select {
+    width: 251.56px;
+}
+
+
+.stamp div span {
+    display: flex;
+    flex-direction: row;
+}
+
+.stamp div span div:not(.bottom, .top) {
+    border-right: 1px solid black;
+    padding-right: 7px;
+}
+
+.stamp div span h3 {
+    display: inline-block;
+    padding-left: 7px;
+}
+
+.stamp div span h4 {
+    padding: 4px 0px 0px 8px;
+    font-weight: normal;
+}
+
+.stamp div span span {
+    display: flex;
+    flex-direction: column;
+}
+
+.stamp div div.top {
+    padding-bottom: 40px;
+    padding-top: 3px;
+}
+
+.stamp div div.bottom, .stamp div div.top {
+    display: flex;
+    flex-direction: row;
+}
+
+
 .stamps-list {
     display: grid;
 
-    grid-template-columns: 420px 420px 420px 420px;
-    grid-template-rows: 270px 270px 270px 270px;
+    grid-template-columns: 420px 420px 420px;
+    grid-template-rows: 270px 270px 270px;
 
     column-gap: 30px;
     row-gap: 50px;
-
-    place-content: center;
-}
-
-h1 {
-    padding-left: 15px;
 }
 
 .stamp {
@@ -33,14 +167,4 @@ h1 {
 .stamp p {
     margin: 0;
     padding: 0;
-}
-
-
-
-.pagination {
-    width: 500px;
-    display: flex;
-    justify-content: space-evenly;
-
-    margin-top: 70px;
 }
