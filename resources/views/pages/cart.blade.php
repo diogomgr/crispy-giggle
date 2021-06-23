@@ -45,7 +45,7 @@
                                             <strong>Color:</strong>
                                         </span>
                                         <span class="font-weight-bold">
-                                            @foreach ($tshirtList as $tshirt)
+                                            @foreach ($tshirtList as $tshirts => $tshirt)
                                                 @if ($tshirt->codigo == $cartItem->id)
                                                     {{ $tshirt->nome }}
                                                     @break

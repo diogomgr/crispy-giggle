@@ -7,6 +7,7 @@ use App\Preco;
 use App\Estampa;
 use App\Cor;
 use App\Encomenda;
+use App\Categoria;
 use Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -25,18 +26,24 @@ class EncomendaController extends Controller
         } else {
             $price = Preco::pluck('preco_un_proprio' . $desconto)->first();
         }
+
+        $categoryList = Categoria::orderBy('id')->whereNull('deleted_at')->get();
+        $data = array(
+            "stampsList" => $stampsList,
+            "categoryList" => $categoryList
+        );
         
         Cart::add([
-            'id'        => $request->input('cor'),
+            'id'        => $request->input('color'),
             'name'      => $stamp->id,
-            'qty'       => $request->input('quantidade'),
+            'qty'       => $request->input('quantity'),
             'price'     => floatval($price),
             'options'   => [
-                'size'  => $request->input('tamanho')
+                'size'  => $request->input('size')
             ]
         ]);
 
-        return view('stamps.catalog', compact('stampsList'));
+        return view('stamps.catalog')->with($data);
     }
 
     public function viewCart()
@@ -44,7 +51,6 @@ class EncomendaController extends Controller
         $cartList = Cart::content();
         $tshirtList = array();
         $stampsList = array();
-        $i = 0;
 
         foreach ($cartList as $cart => $cartItem) {
             $stamp = Estampa::where('id', $cartItem->name)->whereNull('deleted_at')->first();
@@ -53,9 +59,10 @@ class EncomendaController extends Controller
             array_push($tshirtList, $tshirt);
             array_push($stampsList, $stamp); 
         }
+
         $data = array(
             "cartList" => $cartList,
-            "tshirtList" => $tshirtList,
+            "tshirtList" => array_filter($tshirtList),
             "stampsList" => $stampsList
         );
         
